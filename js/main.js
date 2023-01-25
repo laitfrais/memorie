@@ -7,13 +7,22 @@ function restartGame() {
     boxes.innerHTML = '';
     afficheMinuteur.innerHTML = ''; 
     afficheTentatives.innerHTML = '';
-    clearInterval();
+    // arréter le timer
+    clearInterval(timer);
+    startGame();
 }
 
-function clearInterval() {
-    let minutes = 0;
-    let seconds = 0;
-    let timer = setInterval(() => {
+function clearInterval(timer) {
+    throw new Error('Function not implemented.');
+}
+
+
+
+function startGame(){
+
+let minutes = 0;
+let seconds = 0;
+let timer = setInterval(() => {
         seconds++;
         if (seconds === 60) {
             minutes++;
@@ -22,13 +31,6 @@ function clearInterval() {
         afficheMinuteur.innerHTML = `${minutes} : ${seconds}`;
 
     }, 1000);
-}
-
-
-function startGame(){
-
-restartGame();
-
 
 let tentatives = 0;
 function incrementTentatives() {
@@ -105,6 +107,7 @@ listBoxes.forEach((box, key) => {
                 
            
             }
+            console.log(winPairs + ' ' + totalForWin);
             if(winPairs === totalForWin) {
                 //mettre un délais avant de faire l'alerte
                 setTimeout(() => {

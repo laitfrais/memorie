@@ -11,16 +11,12 @@ body{
     
 }
 
-
-
 .boxes{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-gap: 20px;
     margin-top: 20px;
     margin-bottom: 20px;
-    justify-content: center;
-    align-items: center;
     transition: 1s ease;
 }
 
@@ -32,9 +28,10 @@ body{
     padding: 20px;
     box-sizing: border-box;
     margin-top: 20px;
-    align-self: center;
-    justify-content: center;
-    display: flex;
     transition: 1s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
 
 }

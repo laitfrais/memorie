@@ -8,15 +8,22 @@
     <title>Mémories</title>
 </head>
 <body>
-    <h1>Mémories</h1>
-    <button id="start" onclick="startGame()">Start</button>
-    <button id="restart" onclick="restartGame()">Restart</button>
+    
+     
+        <button id="start" onclick="startGame()">Start</button>    
+        <div id="containerAll">
+            <h1 id="titre" style="display: none;">Mémories</h1>
+    
+            <button id="restart" style="display: none;" onclick="restartGame()">Restart</button>
+           
+                <p id="minuteur"></p>
+                <p id="tentatives"></p>
+                <div id="boxes" class="boxes">
+                </div>
 
-    <p id="minuteur"></p>
-    <p id="tentatives"></p>
-    <div id="boxes" class="boxes">
-    </div>
-
+        </div>
+        
+  
     <script src="js/main.js"></script>
 </body>
 </html>

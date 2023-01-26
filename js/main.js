@@ -2,6 +2,9 @@ const afficheMinuteur = document.getElementById('minuteur');
 const afficheTentatives = document.getElementById('tentatives');
 const boxes = document.getElementById('boxes');
 
+
+
+
 function restartGame() {
     //tout clear
     boxes.innerHTML = '';
@@ -19,7 +22,9 @@ function clearInterval(timer) {
 
 
 function startGame(){
-
+    
+    containerAll.style.bottom = "-100vh";
+    containerAll.style.bottom = "0";
 let minutes = 0;
 let seconds = 0;
 let timer = setInterval(() => {
@@ -28,22 +33,18 @@ let timer = setInterval(() => {
             minutes++;
             seconds = 0;
         }
-        afficheMinuteur.innerHTML = `${minutes} : ${seconds}`;
+        afficheMinuteur.innerHTML = `Time = ${minutes}:${seconds}`;
 
     }, 1000);
 
 let tentatives = 0;
 function incrementTentatives() {
     tentatives++;
-    afficheTentatives.innerHTML = tentatives;
+    afficheTentatives.innerHTML = "Tentatives = " + tentatives;
 }
 
 
-
-
-
-
-let array = ['Box A', 'Box B', 'Box C','Box D','Box A', 'Box B', 'Box C','Box D'];
+let array = ['lait_frais', 'NexusDev', 'Nico7600','NoixDeCoco6254','lait_frais', 'NexusDev', 'Nico7600','NoixDeCoco6254'];
 let totalForWin = array.length / 2;
 if (totalForWin % 2 !== 0) {
     totalForWin++;
@@ -52,7 +53,7 @@ if (totalForWin % 2 !== 0) {
 array = array.sort((a, b) => Math.random() - 0.5);
 
 array.forEach((box, key) => {
-    boxes.innerHTML = boxes.innerHTML + `<div class="box"> <div class='box-${key}' >${box}</div>`;
+    boxes.innerHTML = boxes.innerHTML + `<div class="box"> <div class='box-${key}' ><img src="https://skins.nationsglory.fr/face/${box}/21" alt=""></div>`;
     let replaceBox = document.querySelector(`.box-${key}`);
     replaceBox.style.visibility = 'hidden';
 });

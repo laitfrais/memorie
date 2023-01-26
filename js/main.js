@@ -5,16 +5,6 @@ const boxes = document.getElementById('boxes');
 
 
 
-function restartGame() {
-    //tout clear
-    boxes.innerHTML = '';
-    afficheMinuteur.innerHTML = ''; 
-    afficheTentatives.innerHTML = '';
-    // arréter le timer
-    clearInterval(timer);
-    startGame();
-}
-
 function clearInterval(timer) {
     throw new Error('Function not implemented.');
 }
@@ -110,11 +100,41 @@ listBoxes.forEach((box, key) => {
             }
             console.log(winPairs + ' ' + totalForWin);
             if(winPairs === totalForWin) {
-                //mettre un délais avant de faire l'alerte
+                let winer = document.getElementById('winner-modal');
+                
                 setTimeout(() => {
-                    alert(`Vous avez gagné en ${tentatives} tentatives et en ${minutes} minutes et ${seconds} secondes`);
-                    restartGame();
+                    boxes.innerHTML = '';
+                    afficheMinuteur.innerHTML = ''; 
+                    afficheTentatives.innerHTML = '';
+                    winer.innerHTML = winer.innerHTML +` <div class="modal">
+                    <span class="emoji round">🏆</span>
+                    <h1 class="titre-win">Félicitation !</h1>
+                    <p>Vous avez gagné en ${tentatives} tentatives et en ${minutes} minutes et ${seconds} secondes</p>
+                    </div>`;
                 }, 1100);
+                //annimation confetti
+                for(i=0; i<100; i++) {
+                    var randomRotation = Math.floor(Math.random() * 360);
+                    var randomScale = Math.random() * 1;
+                    var randomWidth = Math.floor(Math.random() * Math.max(document.documentElement.clientWidth, window.innerWidth || 0));
+                    var randomHeight =  Math.floor(Math.random() * Math.max(document.documentElement.clientHeight, window.innerHeight || 500));
+                    
+                    var randomAnimationDelay = Math.floor(Math.random() * 15);
+                    console.log(randomAnimationDelay);
+                  
+                    var colors = ['#0CD977', '#FF1C1C', '#FF93DE', '#5767ED', '#FFC61C', '#8497B0']
+                    var randomColor = colors[Math.floor(Math.random() * colors.length)];
+                  
+                    var confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.top=randomHeight + 'px';
+                    confetti.style.right=randomWidth + 'px';
+                    confetti.style.backgroundColor=randomColor;
+                    confetti.style.obacity=randomScale;
+                    confetti.style.transform='skew(15deg) rotate(' + randomRotation + 'deg)';
+                    confetti.style.animationDelay=randomAnimationDelay + 's';
+                    document.getElementById("confetti-wrapper").appendChild(confetti);
+                  }
               }
 
             saveArray = [];
@@ -128,21 +148,3 @@ listBoxes.forEach((box, key) => {
 });
 }
 
-
-
-/*
-boxes.forEach((box, key) => {
-    console.log(box, key);
-    box.innerHTML = array[key];
-    box.addEventListener('click', (event) => {
-        console.log('clicked', event.target.innerHTML);
-        //alert(`Vous avez cliqué sur la case ${event.target.innerHTML}`)
-        //event.target.style.backgroundColor = 'red';
-        //event.target.style.visibility = 'hidden';
-        //event.target.style.display = 'none';
-
-        setTimeout(() => {
-            event.target.style.display = 'block';
-        }, 1000);
-    });
-});*/
